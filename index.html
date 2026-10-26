@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero G Dreams — Sleep scheduling for lunar crews</title>
+<meta name="description" content="Zero G Dreams is a three-person student team at Ranchview High School building a sleep-scheduling tool for lunar crews. It takes a mission timeline and works out when each astronaut should sleep. Project 01, in progress.">
+<meta name="theme-color" content="#F7F2E8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1024'/%3E%3Ccircle cx='32' cy='30' r='14' fill='%23FFC94D'/%3E%3Ccircle cx='38' cy='26' r='12' fill='%230D1024'/%3E%3Ccircle cx='46' cy='44' r='3' fill='%23FFF'/%3E%3Ccircle cx='18' cy='48' r='2' fill='%23FFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip" href="#project">Skip to the project</a>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav">
+  <a class="mark" href="#top">
+    <svg viewBox="0 0 40 40" aria-hidden="true" class="mark-icon">
+      <circle cx="18" cy="19" r="11.5" fill="var(--butter)"/>
+      <circle cx="24" cy="14" r="8.6" fill="var(--ink)"/>
+      <circle cx="18" cy="19" r="11.5" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+      <circle cx="33" cy="26" r="2.1" fill="var(--coral)"/>
+      <circle cx="9" cy="34" r="1.3" fill="var(--ink)"/>
+    </svg>
+    <span>Zero G Dreams</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#project">Project</a>
+    <a href="#crew">Crew</a>
+    <a href="#foot">Say hi</a>
+  </nav>
+
+  <button class="zerog" type="button" id="zerog" aria-pressed="false">
+    <span class="dot" aria-hidden="true"></span> Zero&nbsp;G
+  </button>
+</header>
+
+<main>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker reveal">
+        <span class="dot-live" aria-hidden="true"></span>
+        Ranchview High School · NASA HUNCH SFT 2026–27
+      </p>
+
+      <h1 class="wordmark reveal">
+        <span class="wm-a">Zero&nbsp;G</span>
+        <span class="wm-b">Dreams</span>
+      </h1>
+
+      <p class="lede reveal">
+        Zero G Dreams is a three-person student team at Ranchview High School. We are
+        building a sleep-scheduling tool for lunar missions:
+        <span class="hl">give it a crew's timeline and it works out when each person
+        should sleep.</span>
+      </p>
+
+      <div class="hero-actions reveal">
+        <a class="btn btn-solid" href="#project">See the project <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#crew">Meet the crew</a>
+      </div>
+
+      <ul class="hero-tags reveal" aria-label="Team facts">
+        <li>Est. 2026</li>
+        <li>Irving, TX</li>
+        <li>Crew of 3</li>
+      </ul>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <div class="postcard" id="postcard">
+        <span class="stamp">MISSION<br>CREW 03</span>
+
+        <svg class="orbit-art" viewBox="0 0 400 400">
+          <defs>
+            <clipPath id="moonclip"><circle cx="200" cy="196" r="86"/></clipPath>
+          </defs>
+
+          <ellipse cx="200" cy="196" rx="168" ry="92" fill="none" stroke="currentColor"
+                   stroke-width="1.6" stroke-dasharray="5 9" opacity=".55"
+                   transform="rotate(-18 200 196)"/>
+          <ellipse cx="200" cy="196" rx="126" ry="150" fill="none" stroke="currentColor"
+                   stroke-width="1.4" stroke-dasharray="2 8" opacity=".3"
+                   transform="rotate(24 200 196)"/>
+
+          <g clip-path="url(#moonclip)">
+            <circle cx="200" cy="196" r="86" fill="var(--butter)"/>
+            <circle cx="238" cy="158" r="72" fill="var(--ink)"/>
+            <circle cx="164" cy="228" r="9" fill="var(--ink)" opacity=".55"/>
+            <circle cx="182" cy="146" r="5" fill="var(--ink)" opacity=".45"/>
+            <circle cx="150" cy="184" r="4" fill="var(--ink)" opacity=".4"/>
+          </g>
+          <circle cx="200" cy="196" r="86" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+
+          <g class="orbit-dot">
+            <circle cx="368" cy="196" r="7" fill="var(--coral)"/>
+          </g>
+
+          <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+            <path d="M92 96v16M84 104h16"/>
+            <path d="M310 300v12M304 306h12"/>
+            <path d="M132 322h10M137 317v10"/>
+          </g>
+          <circle cx="306" cy="92" r="3" fill="var(--ink)"/>
+        </svg>
+
+        <p class="postcard-note">sleep<br>is a<br>subsystem</p>
+      </div>
+      <span class="scribble" aria-hidden="true">
+        <svg viewBox="0 0 220 60"><path d="M6 44c34-30 62 12 96-10s52 6 112-18" fill="none" stroke="var(--coral)" stroke-width="5" stroke-linecap="round"/></svg>
+      </span>
+    </div>
+  </section>
+
+  <!-- ============================ MARQUEE ============================ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Lunar nights are long ✦</span><span>Sleep is a subsystem ✦</span>
+      <span>Every number gets a diagram ✦</span><span>Built offline on purpose ✦</span>
+      <span>Lunar nights are long ✦</span><span>Sleep is a subsystem ✦</span>
+      <span>Every number gets a diagram ✦</span><span>Built offline on purpose ✦</span>
+    </div>
+  </div>
+
+  <!-- ============================ PROJECT ============================ -->
+  <section class="project" id="project">
+    <div class="project-head reveal">
+      <div>
+        <p class="kicker kicker-dark">Project 01 · in progress</p>
+        <h2 class="h2">A sleep schedule <em>for the Moon</em>.</h2>
+      </div>
+      <span class="sticker">Coming<br>soon</span>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-copy reveal">
+        <p class="big">
+          A lunar day is 29.5 Earth days long. The crew's body clock is still 24.
+        </p>
+        <p>
+          Sleep is usually the first item a schedule gives up. A long mission is planned in
+          advance — operations, exercise, maintenance, meals — and when time runs short, the
+          hours come out of sleep. On the ISS that has added up to roughly 6.1 hours a night
+          against the 8.5 hours NASA's own standard recommends. One short night costs very
+          little; a month of them slows reaction time and moves mistakes into the parts of a
+          mission that can least afford them.
+        </p>
+        <p>
+          <span class="hl-dark">The Moon makes that harder.</span> Light and dark arrive in
+          two-week stretches, so sunrise and sunset stop working as cues for when to sleep;
+          the schedule has to come from the mission plan instead. The plan is already
+          crowded, because the work does not pause for night.
+        </p>
+        <p>
+          Hunch is the planner we are building to fix that. Give it a mission timeline and
+          a crew, and it decides when each person should be asleep. From that one number it
+          works backward through the rest of the day: when to start winding down, the last
+          hour that exercise is allowed, the last coffee that will still be active at
+          bedtime, and the wake time that keeps the next shift on schedule. Alongside the
+          schedule it calculates alertness hour by hour, so a planner can see which
+          operations land on a tired crew and move them before the mission flies.
+        </p>
+        <p>
+          Those numbers come from a nine-step model of how fatigue works: the sleep pressure
+          that builds up since the last sleep period, the body clock it fights against, sleep
+          lost to interruptions, and the debt carried into the next day. Every step is written
+          out, and the chain is checked against 20 results from published NASA research. In
+          our 28-sol simulation it brings mission fatigue down from 43.8 to 15.0 — about
+          66 percent. The planner runs as a single file on a plain laptop: no install, no
+          account, no network, because the far side of the Moon has no connection to fall
+          back on.
+        </p>
+
+      </div>
+
+      <div class="project-side">
+        <figure class="chart-card reveal">
+        <figcaption class="chart-title">Alertness across one lunar sol</figcaption>
+
+        <svg class="chart" viewBox="0 0 380 240" role="img"
+             aria-label="Line chart of alertness over 24 hours, with the 02:00 operation shaded as a low point.">
+          <rect x="0" y="0" width="380" height="240" fill="none"/>
+          <g stroke="currentColor" opacity=".16">
+            <line x1="36" y1="40" x2="356" y2="40"/>
+            <line x1="36" y1="90" x2="356" y2="90"/>
+            <line x1="36" y1="140" x2="356" y2="140"/>
+            <line x1="36" y1="190" x2="356" y2="190"/>
+          </g>
+          <rect x="196" y="30" width="46" height="166" fill="var(--coral)" opacity=".16"/>
+          <line x1="196" y1="30" x2="196" y2="196" stroke="var(--coral)" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <line x1="242" y1="30" x2="242" y2="196" stroke="var(--coral)" stroke-width="1.4" stroke-dasharray="4 5"/>
+
+          <path d="M36 66 C90 52 150 78 186 116 C202 132 208 136 216 136
+                   C240 136 268 92 300 84 C328 76 344 82 356 78"
+                fill="none" stroke="var(--mint)" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M36 92 C92 96 148 112 186 140 C204 154 210 156 220 156
+                   C246 156 268 140 300 138 C330 136 346 140 356 138"
+                fill="none" stroke="currentColor" stroke-width="2.6" stroke-dasharray="7 7"
+                opacity=".45" stroke-linecap="round"/>
+
+          <circle cx="216" cy="136" r="6" fill="var(--coral)"/>
+          <text x="204" y="214" class="tick" fill="currentColor">02:00 op</text>
+          <text x="36" y="228" class="tick" fill="currentColor">00:00</text>
+          <text x="326" y="228" class="tick" fill="currentColor">24:00</text>
+          <text x="36" y="26" class="tick" fill="currentColor">alert</text>
+          <text x="300" y="132" class="tick" fill="currentColor" opacity=".6">naive</text>
+        </svg>
+
+        <div class="chart-legend">
+          <span><i class="sw sw-mint"></i> with a schedule</span>
+          <span><i class="sw sw-ink"></i> without one</span>
+        </div>
+        </figure>
+
+        <ul class="status reveal">
+          <li class="done"><span class="pip" aria-hidden="true">✓</span>
+            <b>The model</b> — nine steps, checked against 20 published results</li>
+          <li class="doing"><span class="pip" aria-hidden="true">◐</span>
+            <b>The app</b> — a working planner with crew and mission views; more screens still being added</li>
+          <li class="later"><span class="pip" aria-hidden="true">○</span>
+            <b>Flight data</b> — the model still needs real actigraphy from a mission to calibrate</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="stats reveal">
+      <li><b>66<span>%</span></b><span class="stat-label">less mission fatigue, scheduled against unscheduled, over 28 sols</span></li>
+      <li><b>8.5<span>h</span></b><span class="stat-label">the sleep period NASA's standard recommends</span></li>
+      <li><b>6.1<span>h</span></b><span class="stat-label">what ISS crews measure on average</span></li>
+    </ul>
+
+    <p class="project-foot reveal">
+      <strong>Next up:</strong> our Preliminary Design Review in October 2026. After the
+      review, the model, the design documents and the app build go public.
+    </p>
+  </section>
+
+  <!-- ============================ CREW ============================ -->
+  <section class="crew" id="crew">
+    <div class="crew-head reveal">
+      <p class="kicker">The crew · 3 humans</p>
+      <h2 class="h2">Small team, <em>big orbit</em>.</h2>
+      <p class="crew-intro">
+        Three students at Ranchview High School in Irving, Texas. The work is split three
+        ways: the model, the drawings, and the research behind both.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--butter)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M38 62c6 7 18 7 24 0" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M14 26c8-8 18-12 28-13" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Avyukt Gupta</h3>
+        <p class="role">Math &amp; machinery</p>
+        <p class="blurb">Builds and tests the nine-step model: sleep pressure, circadian timing, and the alertness score that comes out of them.</p>
+        <ul class="chips"><li>the model</li><li>validation</li></ul>
+        <span class="crew-no">01</span>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--mint)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M36 60c8 9 20 9 28 0" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M70 22l6-8M74 24l10-3" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Arjun Urankar</h3>
+        <p class="role">Drawings &amp; design</p>
+        <p class="blurb">Draws the figures and lays out the panels, so the argument can be read as diagrams instead of paragraphs.</p>
+        <ul class="chips"><li>figures</li><li>layout</li></ul>
+        <span class="crew-no">02</span>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--coral)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M38 61c5 6 17 6 24-1" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M22 22c4-6 10-9 16-10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Muaaz Hussain</h3>
+        <p class="role">Research &amp; words</p>
+        <p class="blurb">Reads the source papers, keeps the citations straight, and writes the copy that goes on the board.</p>
+        <ul class="chips"><li>sources</li><li>writing</li></ul>
+        <span class="crew-no">03</span>
+      </article>
+    </div>
+
+    <p class="crew-foot reveal">
+      We are taking part in <a href="https://www.nasahunch.com/" target="_blank" rel="noopener">NASA HUNCH</a> SFT,
+      the Student Flight Test program, for the 2026–27 year.
+    </p>
+  </section>
+
+  <!-- ============================ CTA / FOOT ============================ -->
+  <section class="foot" id="foot">
+    <div class="foot-inner reveal">
+      <p class="kicker kicker-dark">Say hi</p>
+      <h2 class="h2 foot-h2">Questions,<br><em>or a note for the crew</em>?</h2>
+      <p class="foot-copy">
+        Zero G Dreams is a student team at Ranchview High School in Irving, Texas. We are
+        there most weekdays, and reachable through the NASA HUNCH program.
+      </p>
+      <a class="btn btn-butter" href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Zero G Dreams</span>
+      <span>Irving, Texas · NASA HUNCH SFT</span>
+      <a href="#project">Project</a>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
