@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero G Dreams — Ranchview High School</title>
+<meta name="description" content="Zero G Dreams is a three-person team at Ranchview High School building a sleep planner for lunar crews. Project in progress.">
+<meta name="theme-color" content="#F7F2E8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1024'/%3E%3Ccircle cx='32' cy='30' r='14' fill='%23FFC94D'/%3E%3Ccircle cx='38' cy='26' r='12' fill='%230D1024'/%3E%3Ccircle cx='46' cy='44' r='3' fill='%23FFF'/%3E%3Ccircle cx='18' cy='48' r='2' fill='%23FFF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip" href="#project">Skip to the project</a>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav">
+  <a class="mark" href="#top">
+    <svg viewBox="0 0 40 40" aria-hidden="true" class="mark-icon">
+      <circle cx="18" cy="19" r="11.5" fill="var(--butter)"/>
+      <circle cx="24" cy="14" r="8.6" fill="var(--ink)"/>
+      <circle cx="18" cy="19" r="11.5" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+      <circle cx="33" cy="26" r="2.1" fill="var(--coral)"/>
+      <circle cx="9" cy="34" r="1.3" fill="var(--ink)"/>
+    </svg>
+    <span>Zero G Dreams</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#project">Project</a>
+    <a href="#crew">Crew</a>
+    <a href="#foot">Say hi</a>
+  </nav>
+
+  <button class="zerog" type="button" id="zerog" aria-pressed="false">
+    <span class="dot" aria-hidden="true"></span> Zero&nbsp;G
+  </button>
+</header>
+
+<main>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker reveal">
+        <span class="dot-live" aria-hidden="true"></span>
+        Ranchview High School · NASA HUNCH SFT 2026–27
+      </p>
+
+      <h1 class="wordmark reveal">
+        <span class="wm-a">Zero&nbsp;G</span>
+        <span class="wm-b">Dreams</span>
+      </h1>
+
+      <p class="lede reveal">
+        Three students, one very long night shift, and a plan to fix how astronauts sleep
+        on the Moon. <span class="hl">We are building the thing we kept wishing existed.</span>
+      </p>
+
+      <div class="hero-actions reveal">
+        <a class="btn btn-solid" href="#project">See the project <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#crew">Meet the crew</a>
+      </div>
+
+      <ul class="hero-tags reveal" aria-label="Team facts">
+        <li>Est. 2026</li>
+        <li>Irving, TX</li>
+        <li>Crew of 3</li>
+      </ul>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <div class="postcard" id="postcard">
+        <span class="stamp">MISSION<br>CREW 03</span>
+
+        <svg class="orbit-art" viewBox="0 0 400 400">
+          <defs>
+            <clipPath id="moonclip"><circle cx="200" cy="196" r="86"/></clipPath>
+          </defs>
+
+          <ellipse cx="200" cy="196" rx="168" ry="92" fill="none" stroke="currentColor"
+                   stroke-width="1.6" stroke-dasharray="5 9" opacity=".55"
+                   transform="rotate(-18 200 196)"/>
+          <ellipse cx="200" cy="196" rx="126" ry="150" fill="none" stroke="currentColor"
+                   stroke-width="1.4" stroke-dasharray="2 8" opacity=".3"
+                   transform="rotate(24 200 196)"/>
+
+          <g clip-path="url(#moonclip)">
+            <circle cx="200" cy="196" r="86" fill="var(--butter)"/>
+            <circle cx="238" cy="158" r="72" fill="var(--ink)"/>
+            <circle cx="164" cy="228" r="9" fill="var(--ink)" opacity=".55"/>
+            <circle cx="182" cy="146" r="5" fill="var(--ink)" opacity=".45"/>
+            <circle cx="150" cy="184" r="4" fill="var(--ink)" opacity=".4"/>
+          </g>
+          <circle cx="200" cy="196" r="86" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+
+          <g class="orbit-dot">
+            <circle cx="368" cy="196" r="7" fill="var(--coral)"/>
+          </g>
+
+          <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+            <path d="M92 96v16M84 104h16"/>
+            <path d="M310 300v12M304 306h12"/>
+            <path d="M132 322h10M137 317v10"/>
+          </g>
+          <circle cx="306" cy="92" r="3" fill="var(--ink)"/>
+        </svg>
+
+        <p class="postcard-note">sleep<br>is a<br>subsystem</p>
+      </div>
+      <span class="scribble" aria-hidden="true">
+        <svg viewBox="0 0 220 60"><path d="M6 44c34-30 62 12 96-10s52 6 112-18" fill="none" stroke="var(--coral)" stroke-width="5" stroke-linecap="round"/></svg>
+      </span>
+    </div>
+  </section>
+
+  <!-- ============================ MARQUEE ============================ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Lunar nights are long ✦</span><span>Sleep is a subsystem ✦</span>
+      <span>Every number gets a diagram ✦</span><span>Built offline on purpose ✦</span>
+      <span>Lunar nights are long ✦</span><span>Sleep is a subsystem ✦</span>
+      <span>Every number gets a diagram ✦</span><span>Built offline on purpose ✦</span>
+    </div>
+  </div>
+
+  <!-- ============================ PROJECT ============================ -->
+  <section class="project" id="project">
+    <div class="project-head reveal">
+      <div>
+        <p class="kicker kicker-dark">Project 01 · in progress</p>
+        <h2 class="h2">Sleep, but <em>for astronauts</em>.</h2>
+      </div>
+      <span class="sticker">Coming<br>soon</span>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-copy reveal">
+        <p class="big">
+          A lunar day is 29.5 Earth days long. The work still happens at 3 a.m.
+        </p>
+        <p>
+          Crews lose sleep first and notice it last, so fatigue quietly becomes the thing
+          that breaks a mission. We're building a planner that takes a mission timeline,
+          finds the safest sleep windows, and tells a crew when they're running on empty —
+          before they find out the hard way.
+        </p>
+        <p>
+          It runs on a plain laptop, offline. Fancy cloud dashboards are useless when the
+          nearest server is 384,000 km away.
+        </p>
+
+        <ul class="status">
+          <li class="done"><span class="pip" aria-hidden="true">✓</span>
+            <b>The model</b> — nine steps, 20 checks against published NASA data</li>
+          <li class="doing"><span class="pip" aria-hidden="true">◐</span>
+            <b>The app</b> — works, still growing new screens</li>
+          <li class="later"><span class="pip" aria-hidden="true">○</span>
+            <b>Real flight data</b> — needs a launch we don't have</li>
+        </ul>
+      </div>
+
+      <figure class="chart-card reveal">
+        <figcaption class="chart-title">Alertness across one lunar sol</figcaption>
+
+        <svg class="chart" viewBox="0 0 380 240" role="img"
+             aria-label="Line chart of alertness over 24 hours, with the 02:00 operation shaded as a low point.">
+          <rect x="0" y="0" width="380" height="240" fill="none"/>
+          <g stroke="currentColor" opacity=".16">
+            <line x1="36" y1="40" x2="356" y2="40"/>
+            <line x1="36" y1="90" x2="356" y2="90"/>
+            <line x1="36" y1="140" x2="356" y2="140"/>
+            <line x1="36" y1="190" x2="356" y2="190"/>
+          </g>
+          <rect x="196" y="30" width="46" height="166" fill="var(--coral)" opacity=".16"/>
+          <line x1="196" y1="30" x2="196" y2="196" stroke="var(--coral)" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <line x1="242" y1="30" x2="242" y2="196" stroke="var(--coral)" stroke-width="1.4" stroke-dasharray="4 5"/>
+
+          <path d="M36 66 C90 52 150 78 186 116 C202 132 208 136 216 136
+                   C240 136 268 92 300 84 C328 76 344 82 356 78"
+                fill="none" stroke="var(--mint)" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M36 92 C92 96 148 112 186 140 C204 154 210 156 220 156
+                   C246 156 268 140 300 138 C330 136 346 140 356 138"
+                fill="none" stroke="currentColor" stroke-width="2.6" stroke-dasharray="7 7"
+                opacity=".45" stroke-linecap="round"/>
+
+          <circle cx="216" cy="136" r="6" fill="var(--coral)"/>
+          <text x="204" y="214" class="tick" fill="currentColor">02:00 op</text>
+          <text x="36" y="228" class="tick" fill="currentColor">00:00</text>
+          <text x="326" y="228" class="tick" fill="currentColor">24:00</text>
+          <text x="36" y="26" class="tick" fill="currentColor">alert</text>
+          <text x="300" y="132" class="tick" fill="currentColor" opacity=".6">naive</text>
+        </svg>
+
+        <div class="chart-legend">
+          <span><i class="sw sw-mint"></i> planned sleep</span>
+          <span><i class="sw sw-ink"></i> no plan</span>
+        </div>
+      </figure>
+    </div>
+
+    <ul class="stats reveal">
+      <li><b>66<span>%</span></b><span class="stat-label">less fatigue in our 28-sol simulation</span></li>
+      <li><b>8.5<span>h</span></b><span class="stat-label">what NASA says a crew needs</span></li>
+      <li><b>6.1<span>h</span></b><span class="stat-label">what ISS crews actually get</span></li>
+    </ul>
+
+    <p class="project-foot reveal">
+      <strong>Next up:</strong> Preliminary Design Review, October 2026. Public sneak peek
+      when it stops embarrassing us — soon-ish.
+    </p>
+  </section>
+
+  <!-- ============================ CREW ============================ -->
+  <section class="crew" id="crew">
+    <div class="crew-head reveal">
+      <p class="kicker">The crew · 3 humans</p>
+      <h2 class="h2">Small team, <em>big orbit</em>.</h2>
+      <p class="crew-intro">
+        We share one classroom, one whiteboard, and a stubborn belief that a good diagram
+        beats a long paragraph.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--butter)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M38 62c6 7 18 7 24 0" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M14 26c8-8 18-12 28-13" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Avyukt Gupta</h3>
+        <p class="role">Math &amp; machinery</p>
+        <p class="blurb">Can explain the nine-step chain in under a minute. Genuinely asks you to.</p>
+        <ul class="chips"><li>the model</li><li>mission math</li></ul>
+        <span class="crew-no">01</span>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--mint)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M36 60c8 9 20 9 28 0" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M70 22l6-8M74 24l10-3" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Arjun Urankar</h3>
+        <p class="role">Drawings &amp; design</p>
+        <p class="blurb">Believes every number deserves a diagram, and every diagram needs one more arrow.</p>
+        <ul class="chips"><li>figures</li><li>layout</li></ul>
+        <span class="crew-no">02</span>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="var(--coral)"/>
+            <circle cx="50" cy="50" r="46" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="38" cy="44" r="3.4" fill="var(--ink)"/>
+            <circle cx="62" cy="44" r="3.4" fill="var(--ink)"/>
+            <path d="M38 61c5 6 17 6 24-1" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M22 22c4-6 10-9 16-10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Muaaz Hussain</h3>
+        <p class="role">Research &amp; words</p>
+        <p class="blurb">Reads the papers so the rest of us can keep pretending we did.</p>
+        <ul class="chips"><li>sources</li><li>the story</li></ul>
+        <span class="crew-no">03</span>
+      </article>
+    </div>
+
+    <p class="crew-foot reveal">
+      We're taking part in <a href="https://www.nasahunch.com/" target="_blank" rel="noopener">NASA HUNCH</a> SFT,
+      which is also why our whiteboard has a mission patch on it.
+    </p>
+  </section>
+
+  <!-- ============================ CTA / FOOT ============================ -->
+  <section class="foot" id="foot">
+    <div class="foot-inner reveal">
+      <p class="kicker kicker-dark">Say hi</p>
+      <h2 class="h2 foot-h2">Got a question, a<br><em>spare launch window</em>?</h2>
+      <p class="foot-copy">
+        Find us at Ranchview High School in Irving, Texas — or catch the crew between
+        classes, usually arguing about a chart.
+      </p>
+      <a class="btn btn-butter" href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Zero G Dreams</span>
+      <span>Made after school, probably past bedtime</span>
+      <a href="#project">Project</a>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
