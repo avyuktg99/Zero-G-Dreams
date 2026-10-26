@@ -335,31 +335,6 @@ body.zerog-on .zerog .dot{background:var(--coral); transform:scale(1.15)}
   color:#F4F6FF; margin-bottom:22px; max-width:22ch;
 }
 
-.status{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:10px}
-.status li{
-  display:flex; gap:12px; align-items:flex-start;
-  font-size:.93rem; line-height:1.45; color:#C3C9E4;
-  padding:11px 14px; border-radius:12px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.1);
-}
-/* label over description: the list lives in a narrow column, and an inline
-   label/description pair broke across the dash at these widths. */
-.status .st-body{display:grid; gap:2px}
-.status b{display:block; color:#F4F6FF; font-weight:600}
-.status .st-body span{color:#B4BCDC}
-.pip{
-  font-size:.95rem; line-height:1; flex:none;
-  width:20px; height:20px; display:grid; place-items:center;
-  border-radius:50%; translate:0 2px;
-}
-.status .done .pip{background:var(--mint); color:var(--ink)}
-.status .doing .pip{background:var(--butter); color:var(--ink)}
-.status .later .pip{background:transparent; color:#8E97C0; border:1.5px solid #8E97C0}
-
-.project-side{display:grid; gap:clamp(20px, 2.6vw, 30px); align-content:start}
-.project-side .status{margin:0}
-
 .chart-card{
   margin:0; background:var(--space-2);
   border:1.6px solid rgba(255,255,255,.16); border-radius:20px;
