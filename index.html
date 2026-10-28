@@ -142,19 +142,19 @@
 
     <div class="deck-wrap reveal">
       <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel"
-           aria-label="The project, in four slides">
+           aria-label="The project, in eight slides">
 
         <!-- ---------------------------------------------------- slide 1 -->
         <article class="deck-slide is-active" aria-roledescription="slide"
-                 aria-label="Slide 1 of 4, the problem">
+                 aria-label="Slide 1 of 8, the problem">
           <div class="slide-copy">
             <p class="slide-kick anim">01 · The problem</p>
             <h3 class="slide-h anim">A lunar day is 29.5 Earth days. The crew's clock is still 24.</h3>
             <p class="slide-p anim">
-              Sleep is the first thing a mission schedule gives up. ISS crews average about
-              two and a half hours less per night than NASA's standard calls for. On the Moon
-              the schedule has to come from the plan, not from sunrise — light and dark arrive
-              in two-week stretches.
+              Sleep is the first thing a mission schedule gives up. On the Moon the schedule has
+              to come from the plan, not from sunrise — light and dark arrive in two-week
+              stretches, and the habitat's lamps are the only thing telling a body what time
+              it is.
             </p>
           </div>
 
@@ -179,15 +179,49 @@
 
         <!-- ---------------------------------------------------- slide 2 -->
         <article class="deck-slide" aria-roledescription="slide"
-                 aria-label="Slide 2 of 4, the tool">
+                 aria-label="Slide 2 of 8, the gap">
           <div class="slide-copy">
-            <p class="slide-kick anim">02 · The tool</p>
+            <p class="slide-kick anim">02 · The gap</p>
+            <h3 class="slide-h anim">NASA schedules 8.5 hours. Astronauts sleep 6.09.</h3>
+            <p class="slide-p anim">
+              The 2.41 hours in between come out of schedule overruns, slow sleep onset and a
+              dark, noisy station. And crews stop <em>feeling</em> the deficit before their
+              performance stops showing it — measured in HERA, not assumed — so this is not
+              something you can fix by asking people how tired they are.
+            </p>
+          </div>
+
+          <figure class="slide-art anim">
+            <svg class="bars" viewBox="0 0 310 205" role="img"
+                 aria-label="Comparisons: NASA schedules 8.5 hours in bed, ISS crews record 6.09 hours of sleep, a gap of 2.41 hours.">
+              <line x1="34" y1="170" x2="292" y2="170" stroke="currentColor" stroke-width="1.2" opacity=".3"/>
+              <rect class="bar bar-a" x="60" y="34" width="52" height="136" rx="7" fill="var(--butter)"/>
+              <rect class="bar bar-b" x="150" y="72.6" width="52" height="97.4" rx="7" fill="var(--coral)"/>
+              <path d="M224 34h13v97.4h-13" fill="none" stroke="currentColor" stroke-width="1.3"
+                    stroke-dasharray="4 4" opacity=".55"/>
+              <text x="244" y="86" class="tick" fill="currentColor">2.41 h</text>
+              <text x="60" y="24" class="tick" fill="currentColor" text-anchor="middle">8.5 h</text>
+              <text x="150" y="62" class="tick" fill="currentColor" text-anchor="middle">6.09 h</text>
+              <text x="60" y="190" class="tick" fill="currentColor" text-anchor="middle">scheduled</text>
+              <text x="150" y="190" class="tick" fill="currentColor" text-anchor="middle">slept</text>
+            </svg>
+            <figcaption class="slide-cap">
+              Barger 2014: 7.14 h in bed, 6.09 h asleep. Two different instruments — scale, not precision.
+            </figcaption>
+          </figure>
+        </article>
+
+        <!-- ---------------------------------------------------- slide 3 -->
+        <article class="deck-slide" aria-roledescription="slide"
+                 aria-label="Slide 3 of 8, the tool">
+          <div class="slide-copy">
+            <p class="slide-kick anim">03 · The tool</p>
             <h3 class="slide-h anim">Give it a timeline. It gives back bedtimes.</h3>
             <p class="slide-p anim">
               Hunch takes the ops timeline and a crew, sets when each person should sleep, then
               works backwards through the day — wind-down, last exercise, last caffeine, wake
-              time. Alertness is tracked hour by hour, so a planner can move an operation off a
-              tired crew.
+              time. Two views off one engine: the crew get one sol and one instruction, the
+              planner gets the whole mission and a score.
             </p>
           </div>
 
@@ -230,17 +264,45 @@
           </figure>
         </article>
 
-        <!-- ---------------------------------------------------- slide 3 -->
+        <!-- ---------------------------------------------------- slide 4 -->
         <article class="deck-slide" aria-roledescription="slide"
-                 aria-label="Slide 3 of 4, the model">
+                 aria-label="Slide 4 of 8, the engine">
           <div class="slide-copy">
-            <p class="slide-kick anim">03 · The model</p>
+            <p class="slide-kick anim">04 · The engine</p>
+            <h3 class="slide-h anim">One function. No state, no clock, no network.</h3>
+            <p class="slide-p anim">
+              An array of days goes in, an array of scores comes out. Every input is an
+              argument, which is why the same 212 lines run in Node for the checks and in the
+              browser for the product — and why a reviewer can check the arithmetic by hand.
+            </p>
+          </div>
+
+          <figure class="slide-art anim">
+            <pre class="code"><code><span class="cmt">// the only entry point</span>
+<span class="kw">simulate</span>(days, bandCfg)
+  <span class="arw">→</span> [ { sol, F, band, … } ]
+
+<span class="cmt">// nine steps, one day at a time</span>
+<span class="cmt">// 212 lines · 0 imports · 0 dependencies</span></code></pre>
+            <ul class="minis">
+              <li><b>212</b><span>lines to read</span></li>
+              <li><b>0.19<span> ms</span></b><span>one 28-sol mission</span></li>
+              <li><b>20</b><span>checks, all passing</span></li>
+            </ul>
+          </figure>
+        </article>
+
+        <!-- ---------------------------------------------------- slide 5 -->
+        <article class="deck-slide" aria-roledescription="slide"
+                 aria-label="Slide 5 of 8, the model">
+          <div class="slide-copy">
+            <p class="slide-kick anim">05 · The model</p>
             <h3 class="slide-h anim">Nine steps, chained by dependency.</h3>
             <p class="slide-p anim">
               Where the body clock is, how far it can legally move, what is on board, how much
               bed the crew actually gets, where sleep fits around the ops — then what it all
-              costs. Nine pure functions, no dependencies, twenty checks against published
-              NASA results.
+              costs. Steps 1 to 7 to 8 to 9 is a real chain: the coffee residue cannot be
+              known before the bedtime, and the bedtime cannot be known before the clock.
             </p>
           </div>
 
@@ -257,42 +319,106 @@
               <li><b>09</b>Score<i>seven severities, weighted, 0–100</i></li>
             </ol>
             <figcaption class="slide-cap">
-              One day in, one 0–100 score out. A whole 28-sol mission re-scores in 0.19 ms.
+              Ops is not a step: it sets the bedtime tested at 05 and the hours granted at 04.
             </figcaption>
           </figure>
         </article>
 
-        <!-- ---------------------------------------------------- slide 4 -->
+        <!-- ---------------------------------------------------- slide 6 -->
         <article class="deck-slide" aria-roledescription="slide"
-                 aria-label="Slide 4 of 4, the evidence">
+                 aria-label="Slide 6 of 8, the search">
           <div class="slide-copy">
-            <p class="slide-kick anim">04 · The evidence</p>
-            <h3 class="slide-h anim">About 66 percent less fatigue.</h3>
+            <p class="slide-kick anim">06 · The search</p>
+            <h3 class="slide-h anim">The score is a judge. A loop turns it into a plan.</h3>
             <p class="slide-p anim">
-              Over a 28-sol simulated mission the scheduled plan cuts mean fatigue from 43.8 to
-              15.0 against the ops baseline, and peak sleep debt from 17.5 hours to 1.7. It runs
-              as a single file, offline. Calibration against real flight data is still to come.
-            </p>
-            <p class="slide-next anim">
-              <strong>Next up:</strong> our Preliminary Design Review in October 2026. After the
-              review, the model, the design documents and the app build go public.
+              Because a week re-scores in a fifth of a millisecond, the scheduler can shift one
+              bedtime, score all 28 sols again, and keep the move if the number drops — about
+              40,000 scorings per run. It only moves sleep; ops stay fixed. Local search, so
+              this is a legal plan far better than the baseline, not a proven optimum.
             </p>
           </div>
 
-          <ul class="stats anim">
-            <li>
-              <b><span class="num" data-count="66">0</span><span>%</span></b>
-              <span class="stat-label">less mission fatigue, scheduled against unscheduled, over 28 sols</span>
-            </li>
-            <li>
-              <b><span class="num" data-count="8.5" data-dec="1">0</span><span>h</span></b>
-              <span class="stat-label">the sleep period NASA's standard recommends</span>
-            </li>
-            <li>
-              <b><span class="num" data-count="6.1" data-dec="1">0</span><span>h</span></b>
-              <span class="stat-label">what ISS crews measure on average</span>
-            </li>
-          </ul>
+          <figure class="slide-art anim">
+            <div class="gain">
+              <div class="gain-row">
+                <span class="gain-a num" data-count="43.8" data-dec="1">43.8</span>
+                <span class="gain-arw">→</span>
+                <span class="gain-b num" data-count="15" data-dec="1">15.0</span>
+              </div>
+              <p class="gain-cap">mean fatigue, 28 sols, against the ops plan</p>
+            </div>
+            <ul class="pairs">
+              <li><b>−66%</b><span>less mission fatigue than the unscheduled week</span></li>
+              <li><b>17.5 → 1.7 h</b><span>peak sleep debt across the mission</span></li>
+              <li><b>0</b><span>structural violations: sleep never lands on an op</span></li>
+            </ul>
+          </figure>
+        </article>
+
+        <!-- ---------------------------------------------------- slide 7 -->
+        <article class="deck-slide" aria-roledescription="slide"
+                 aria-label="Slide 7 of 8, the stack">
+          <div class="slide-copy">
+            <p class="slide-kick anim">07 · The stack</p>
+            <h3 class="slide-h anim">No package manager. Nothing to install.</h3>
+            <p class="slide-p anim">
+              The tests and the product execute the same file, so the number on the slide
+              cannot drift from the number in the app. There is no dependency tree, no lockfile
+              and no version drift to audit on a flight computer — which matters more on a
+              vehicle than on a laptop.
+            </p>
+          </div>
+
+          <figure class="slide-art anim">
+            <ul class="pairs">
+              <li><b>Language</b><span>JavaScript, ES modules, ES2020</span></li>
+              <li><b>Runtime</b><span>Node 18+ for checks, any current browser for the app</span></li>
+              <li><b>Dependencies</b><span>none — no package.json, on purpose</span></li>
+              <li><b>Build</b><span>one script inlines engine + data</span></li>
+              <li><b>Ships as</b><span>a single 70,522-byte HTML file</span></li>
+              <li><b>State</b><span>localStorage; no accounts, no cloud</span></li>
+            </ul>
+          </figure>
+        </article>
+
+        <!-- ---------------------------------------------------- slide 8 -->
+        <article class="deck-slide" aria-roledescription="slide"
+                 aria-label="Slide 8 of 8, offline">
+          <div class="slide-copy">
+            <p class="slide-kick anim">08 · Offline</p>
+            <h3 class="slide-h anim">It never tries to be online.</h3>
+            <p class="slide-p anim">
+              A laptop on the lunar surface cannot be assumed to have Node, a package manager,
+              an internet connection, or permission to install anything. So the app writes a
+              packet and hands it to the comms queue — 97 bytes per sol, small enough to ride
+              along with telemetry already being sent. No network also means no attack surface.
+            </p>
+            <p class="slide-next anim">
+              <strong>Stated plainly:</strong> a schedule-design aid, not a fitness-for-duty
+              call. Check-in persistence and flight-data calibration are the next steps.
+            </p>
+          </div>
+
+          <figure class="slide-art anim">
+            <div class="pipe" aria-label="A check-in becomes a 97-byte packet, waits for a comms window, and reaches Earth.">
+              <span class="pipe-node">check-in</span>
+              <i aria-hidden="true">→</i>
+              <span class="pipe-node pipe-node-hl">97 B / sol</span>
+              <i aria-hidden="true">→</i>
+              <span class="pipe-node">comms window</span>
+              <i aria-hidden="true">→</i>
+              <span class="pipe-node">Earth</span>
+            </div>
+
+            <ul class="pairs">
+              <li><b>Network</b><span>0 fetch · 0 WebSocket · 0 CDN · 0 web fonts</span></li>
+              <li><b>Time</b><span>an argument, never Date.now()</span></li>
+              <li><b>Payload</b><span>2,729 bytes for 28 sols — 97 per sol</span></li>
+            </ul>
+            <figcaption class="slide-cap">
+              The ground loop is about a day anyway; the win is that the crew no longer waits for it.
+            </figcaption>
+          </figure>
         </article>
       </div>
 
@@ -302,16 +428,21 @@
           <button class="deck-dot" type="button" aria-label="Go to slide 2"></button>
           <button class="deck-dot" type="button" aria-label="Go to slide 3"></button>
           <button class="deck-dot" type="button" aria-label="Go to slide 4"></button>
+          <button class="deck-dot" type="button" aria-label="Go to slide 5"></button>
+          <button class="deck-dot" type="button" aria-label="Go to slide 6"></button>
+          <button class="deck-dot" type="button" aria-label="Go to slide 7"></button>
+          <button class="deck-dot" type="button" aria-label="Go to slide 8"></button>
         </div>
 
         <div class="deck-nav">
           <button class="deck-btn" type="button" data-dir="-1" aria-label="Previous slide">←</button>
-          <span class="deck-count" aria-live="polite"><b id="deck-now">1</b><span> / 4</span></span>
+          <span class="deck-count" aria-live="polite"><b id="deck-now">1</b><span> / <span id="deck-total">8</span></span></span>
           <button class="deck-btn" type="button" data-dir="1" aria-label="Next slide">→</button>
           <span class="deck-hint">or swipe</span>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- ============================ CREW ============================ -->

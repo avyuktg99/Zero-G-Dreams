@@ -694,7 +694,7 @@ body.zerog-on .orbit-dot{animation-duration:5s}
 .chain i{
   display:block; margin-top:1px;
   font-style:normal; font-weight:400;
-  font-size:.68rem; line-height:1.34; color:#8E97C0;
+  font-size:.68rem; line-height:1.34; color:#A3ADD0;
 }
 .deck-slide.is-active .chain li{animation:chainIn .45s cubic-bezier(.2,.8,.3,1) both}
 .deck-slide.is-active .chain li:nth-child(1){animation-delay:.18s}
@@ -740,7 +740,7 @@ body.zerog-on .orbit-dot{animation-duration:5s}
 .deck-dots{display:flex; align-items:center; gap:8px}
 .deck-dot{
   width:30px; height:5px; padding:0; border:0; border-radius:99px;
-  background:rgba(255,255,255,.22); cursor:pointer;
+  background:rgba(255,255,255,.28); cursor:pointer;
   transition:width .3s cubic-bezier(.2,.8,.3,1), background .3s;
 }
 .deck-dot:hover{background:rgba(255,255,255,.42)}
@@ -837,4 +837,113 @@ body.zerog-on .orbit-dot{animation-duration:5s}
   .project::after, .sticker, .card:hover .avatar svg,
   .deck-slide.is-active .chain li{animation:none}
   .scroll-progress i{transition:none}
+}
+/* ------------------------------------------------- slide art: new blocks */
+/* slide 2 — the measured gap, as two bars */
+.bars{width:min(100%, 300px); height:auto; color:#DCE2FF}
+.bars .bar{
+  transform-box:fill-box; transform-origin:50% 100%;
+  transform:scaleY(.04);
+  transition:transform .85s cubic-bezier(.2,.8,.3,1);
+}
+.deck-slide.is-active .bars .bar{transform:scaleY(1)}
+.deck-slide.is-active .bars .bar-b{transition-delay:.22s}
+
+/* slide 4 — the call, as a code panel */
+.code{
+  margin:0; width:100%; padding:16px 16px 14px;
+  background:rgba(9,12,30,.62); border:1px solid rgba(255,255,255,.14);
+  border-radius:14px; overflow-x:auto;
+  font-family:ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size:clamp(.72rem, .92vw, .8rem); line-height:1.62; color:#C9D2F2;
+}
+.code code{font:inherit; white-space:pre}
+.code .kw{color:var(--butter)}
+.code .arw{color:var(--coral)}
+.code .cmt{color:#7B84AC}
+
+.minis{
+  list-style:none; margin:14px 0 0; padding:0; width:100%;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:9px;
+}
+.minis li{
+  display:flex; flex-direction:column; gap:1px;
+  padding:9px 10px; border-radius:11px;
+  border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.045);
+}
+.minis b{
+  font-family:var(--serif); font-style:italic; font-weight:800;
+  font-size:clamp(1rem, 1.5vw, 1.2rem); line-height:1.05;
+  letter-spacing:-.02em; color:var(--butter);
+}
+.minis b span{
+  font-family:var(--sans); font-style:normal; font-weight:600;
+  font-size:.6em; color:#B9C2E8;
+}
+.minis span{font-size:.67rem; line-height:1.3; color:#8E97C0}
+
+/* slide 6 — the number the loop buys */
+.gain{
+  width:100%; padding:16px 16px 14px; text-align:center;
+  border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  background:rgba(255,255,255,.045);
+}
+.gain-row{
+  display:flex; align-items:baseline; justify-content:center; gap:12px;
+  font-family:var(--serif); font-style:italic; font-weight:800; letter-spacing:-.03em;
+}
+.gain-a{font-size:clamp(1.7rem, 3.4vw, 2.45rem); color:#8E97C0}
+.gain-arw{
+  font-family:var(--sans); font-style:normal; font-weight:600;
+  font-size:1rem; color:var(--coral);
+}
+.gain-b{font-size:clamp(2.1rem, 4.2vw, 3rem); color:var(--mint)}
+.gain-cap{margin:5px 0 0; font-size:.74rem; color:#98A1C6}
+
+/* definition rows — the stack, the search results */
+.pairs{
+  list-style:none; margin:0; padding:0; width:100%;
+  display:grid; gap:8px;
+}
+.pairs li{
+  display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:baseline;
+  padding:9px 12px; border-radius:11px;
+  border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.045);
+  transition:background .25s ease, border-color .25s ease;
+}
+.pairs li:hover{background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.22)}
+.pairs b{
+  font-family:ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size:.68rem; font-weight:600; letter-spacing:.05em;
+  color:var(--butter);
+}
+.pairs span{font-size:.79rem; line-height:1.38; color:#C2CAE6}
+.gain + .pairs{margin-top:13px}
+
+/* slide 8 — check-in to Earth */
+.pipe{
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  flex-wrap:wrap; width:100%; margin-bottom:13px;
+}
+.pipe-node{
+  font-size:.63rem; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; white-space:nowrap;
+  padding:6px 10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.24); background:rgba(255,255,255,.05);
+  color:#DDE3F7;
+}
+.pipe-node-hl{background:var(--butter); border-color:var(--butter); color:var(--ink)}
+.pipe i{font-style:normal; color:#9AA4CC; font-size:.82rem}
+
+@media (max-width: 520px){
+  .code{font-size:.66rem; padding:13px 12px}
+  .code code{white-space:pre-wrap}
+  .minis{grid-template-columns:1fr 1fr}
+  .minis li:last-child{grid-column:1 / -1}
+  .pairs li{grid-template-columns:1fr; gap:3px}
+  .pairs b{font-size:.58rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bars .bar{transform:none; transition:none}
 }

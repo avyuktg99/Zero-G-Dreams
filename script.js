@@ -79,7 +79,10 @@
     var slides = Array.prototype.slice.call(deck.querySelectorAll('.deck-slide'));
     var dots = Array.prototype.slice.call(document.querySelectorAll('.deck-dot'));
     var now = document.getElementById('deck-now');
+    var total = document.getElementById('deck-total');
     var current = 0;
+
+    if (total) total.textContent = String(slides.length);
 
     function mark(i) {
       current = i;
