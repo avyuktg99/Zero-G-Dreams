@@ -483,11 +483,22 @@ body.zerog-on .zerog .dot{background:var(--coral); transform:scale(1.15)}
 .foot-bottom a:hover{color:var(--butter)}
 
 /* -------------------------------------------------------------- reveal */
+/* The stagger delay rides on --d (set and then cleared by script.js) and is
+   folded into these two transitions only, so hover states stay instant. */
 .reveal{
   opacity:0; translate:0 18px;
-  transition:opacity .7s ease, translate .7s cubic-bezier(.2,.8,.3,1);
+  transition:opacity .7s ease var(--d,0ms), translate .7s cubic-bezier(.2,.8,.3,1) var(--d,0ms);
 }
 .reveal.in{opacity:1; translate:0 0}
+
+/* .reveal would otherwise replace the card's own transition list, so a
+   hovering card would snap instead of easing. Keep both here. */
+.card.reveal{
+  transition:opacity .7s ease var(--d,0ms),
+             translate .7s cubic-bezier(.2,.8,.3,1) var(--d,0ms),
+             rotate .22s cubic-bezier(.2,.7,.3,1.4),
+             box-shadow .22s;
+}
 
 /* ------------------------------------------------------------- print */
 @media print{
@@ -543,4 +554,287 @@ body.zerog-on .orbit-dot{animation-duration:5s}
   .scribble{width:110px; bottom:-26px}
   .nav{padding:12px 18px}
   .mark span{font-size:.94rem}
+}
+
+/* ===========================================================================
+   2026 polish — project deck, scroll cues, motion
+   =========================================================================== */
+
+/* scroll progress + sticky nav state --------------------------------------- */
+.scroll-progress{
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:56;
+  background:rgba(20,21,31,.07);
+  pointer-events:none;
+}
+.scroll-progress i{
+  display:block; height:100%; width:100%;
+  background:linear-gradient(90deg, var(--coral), var(--butter) 55%, var(--mint));
+  transform:scaleX(0); transform-origin:0 50%;
+  transition:transform .12s linear;
+}
+.nav.is-stuck{box-shadow:0 8px 24px rgba(20,21,31,.1)}
+
+/* nav: underline sweep + current section */
+.nav-links a{position:relative}
+.nav-links a::after{
+  content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px;
+  background:var(--coral); border-radius:2px;
+  transform:scaleX(0); transform-origin:0 50%;
+  transition:transform .26s cubic-bezier(.2,.8,.3,1);
+}
+.nav-links a:hover::after,
+.nav-links a.is-here::after{transform:scaleX(1)}
+.nav-links a.is-here{color:var(--ink)}
+
+/* --------------------------------------------------------- project deck */
+.deck-wrap{position:relative}
+
+.deck{
+  display:flex; gap:clamp(14px, 2vw, 22px);
+  overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+  padding-bottom:4px;
+}
+.deck::-webkit-scrollbar{display:none}
+.deck:focus-visible{outline:3px solid var(--butter); outline-offset:8px; border-radius:28px}
+
+.deck-slide{
+  flex:0 0 100%; scroll-snap-align:start; scroll-snap-stop:always;
+  display:grid; grid-template-columns:1.02fr .98fr; align-items:center;
+  gap:clamp(20px, 3.4vw, 44px);
+  padding:clamp(22px, 3.4vw, 40px);
+  background:
+    radial-gradient(120% 130% at 94% 2%, rgba(61,90,254,.3), transparent 58%),
+    linear-gradient(158deg, #1A1F3E, var(--space-2) 62%);
+  border:1.6px solid rgba(255,255,255,.15); border-radius:26px;
+  box-shadow:8px 8px 0 rgba(0,0,0,.42);
+  min-height:clamp(316px, 33vw, 392px);
+  opacity:.4; transform:scale(.975);
+  transition:opacity .5s ease, transform .55s cubic-bezier(.2,.8,.3,1);
+}
+.deck-slide.is-active{opacity:1; transform:none}
+.deck-slide > *{min-width:0}
+
+.slide-kick{
+  margin:0 0 9px; font-size:.74rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--butter);
+}
+.slide-h{
+  margin:0 0 13px; max-width:24ch;
+  font-size:clamp(1.32rem, 2.5vw, 2rem); line-height:1.14;
+  letter-spacing:-.03em; font-weight:700; color:#F4F6FF;
+}
+.slide-p{
+  margin:0; max-width:46ch; color:#BEC6E4;
+  font-size:clamp(.94rem, 1.1vw, 1.01rem);
+}
+.slide-next{
+  margin:15px 0 0; padding-left:12px;
+  border-left:2px solid var(--coral);
+  font-size:.85rem; color:#A9B2DA; max-width:44ch;
+}
+.slide-next strong{color:#EDEFFF}
+.slide-cap{
+  margin:14px 0 0; font-size:.77rem; line-height:1.45;
+  color:#98A1C6; text-align:center;
+}
+
+/* each slide's pieces arrive in sequence */
+.slide-copy > .anim,
+.slide-art.anim{
+  opacity:0; translate:0 18px;
+  transition:opacity .6s ease, translate .65s cubic-bezier(.2,.8,.3,1);
+}
+.deck-slide.is-active .anim{opacity:1; translate:0 0}
+.deck-slide.is-active .slide-copy > :nth-child(1){transition-delay:.04s}
+.deck-slide.is-active .slide-copy > :nth-child(2){transition-delay:.11s}
+.deck-slide.is-active .slide-copy > :nth-child(3){transition-delay:.18s}
+.deck-slide.is-active .slide-copy > :nth-child(4){transition-delay:.25s}
+.deck-slide.is-active .slide-art.anim{transition-delay:.13s}
+
+/* slide 1 — the dial */
+.slide-art{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:#DCE2FF; margin:0;
+}
+.dial{width:min(100%, 228px); height:auto; color:#C9D2F2}
+.dial-t{
+  fill:var(--butter); font-family:var(--sans);
+  font-size:15px; font-weight:600; letter-spacing:.02em;
+}
+.dial-t-sm{fill:#9AA4CC; font-size:12px; letter-spacing:.1em; text-transform:uppercase}
+
+/* slide 2 — the chart, sitting in the slide instead of its own card */
+.deck .chart-card{
+  rotate:0deg; box-shadow:none;
+  background:rgba(9,12,30,.55); border-color:rgba(255,255,255,.13);
+  margin:0;
+}
+.deck .chart-title{color:#98A1C6}
+
+/* slide 3 — the nine-step chain */
+.chain{
+  list-style:none; margin:0; padding:0; width:100%;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;
+}
+.chain li{
+  display:flex; flex-direction:column; gap:3px;
+  padding:10px 11px 9px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14); border-radius:11px;
+  font-size:.78rem; font-weight:600; color:#DDE3F7;
+  transition:background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.chain b{
+  font-family:ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size:.64rem; font-weight:600; letter-spacing:.12em; color:var(--butter);
+}
+.chain i{
+  display:block; margin-top:1px;
+  font-style:normal; font-weight:400;
+  font-size:.68rem; line-height:1.34; color:#8E97C0;
+}
+.deck-slide.is-active .chain li{animation:chainIn .45s cubic-bezier(.2,.8,.3,1) both}
+.deck-slide.is-active .chain li:nth-child(1){animation-delay:.18s}
+.deck-slide.is-active .chain li:nth-child(2){animation-delay:.23s}
+.deck-slide.is-active .chain li:nth-child(3){animation-delay:.28s}
+.deck-slide.is-active .chain li:nth-child(4){animation-delay:.33s}
+.deck-slide.is-active .chain li:nth-child(5){animation-delay:.38s}
+.deck-slide.is-active .chain li:nth-child(6){animation-delay:.43s}
+.deck-slide.is-active .chain li:nth-child(7){animation-delay:.48s}
+.deck-slide.is-active .chain li:nth-child(8){animation-delay:.53s}
+.deck-slide.is-active .chain li:nth-child(9){animation-delay:.58s}
+.chain li:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.3)}
+@keyframes chainIn{
+  from{opacity:0; transform:translateY(9px) scale(.97)}
+  to{opacity:1; transform:none}
+}
+/* slide 4 — the numbers, as a stacked data panel */
+.deck .stats{
+  grid-template-columns:1fr; gap:11px;
+  margin:0; padding:0; border-top:0;
+}
+.deck .stats li{
+  padding:12px 14px; border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);
+}
+.deck .stats b{
+  display:flex; align-items:baseline; gap:2px;
+  font-size:clamp(1.7rem, 3vw, 2.15rem);
+}
+.deck .stats b .num{
+  font-size:1em; font-style:inherit; font-family:inherit;
+  color:inherit; line-height:1; letter-spacing:inherit; margin:0;
+  font-variant-numeric:tabular-nums;
+}
+.deck .stats .stat-label{max-width:none; font-size:.8rem}
+
+/* deck controls */
+.deck-bar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin-top:20px;
+}
+.deck-dots{display:flex; align-items:center; gap:8px}
+.deck-dot{
+  width:30px; height:5px; padding:0; border:0; border-radius:99px;
+  background:rgba(255,255,255,.22); cursor:pointer;
+  transition:width .3s cubic-bezier(.2,.8,.3,1), background .3s;
+}
+.deck-dot:hover{background:rgba(255,255,255,.42)}
+.deck-dot[aria-current="true"]{width:52px; background:var(--butter)}
+
+.deck-nav{display:flex; align-items:center; gap:10px}
+.deck-btn{
+  width:40px; height:40px; display:grid; place-items:center;
+  font:inherit; font-size:1rem; color:#EDEFFF; cursor:pointer;
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(255,255,255,.28); border-radius:50%;
+  transition:background .2s, border-color .2s, transform .16s;
+}
+.deck-btn:hover{background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.52); transform:translateY(-1px)}
+.deck-btn:active{transform:translateY(1px)}
+.deck-btn:focus-visible,
+.deck-dot:focus-visible{outline-color:var(--butter); outline-offset:4px}
+
+.deck-count{
+  min-width:46px; text-align:center;
+  font-size:.8rem; letter-spacing:.1em; color:#98A1C6;
+  font-variant-numeric:tabular-nums;
+}
+.deck-count b{color:#EDEFFF; font-weight:700}
+.deck-hint{
+  margin-left:2px; font-size:.7rem; letter-spacing:.13em;
+  text-transform:uppercase; color:#6E77A0;
+}
+
+/* ------------------------------------------------------ small polish bits */
+/* a second, slower star layer so the dark panel breathes */
+.project > *{position:relative; z-index:1}
+.project::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(1.8px 1.8px at 18% 32%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 66% 22%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 42% 61%, #fff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 84% 54%, #fff 50%, transparent 51%),
+    radial-gradient(1.8px 1.8px at 28% 84%, #fff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 74% 76%, #fff 50%, transparent 51%);
+  opacity:.45; animation:twinkle 6.5s ease-in-out infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:.18; transform:translateY(0)}
+  to{opacity:.62; transform:translateY(-4px)}
+}
+
+.sticker{animation:stickerFloat 5.5s ease-in-out infinite}
+@keyframes stickerFloat{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-5px) rotate(1.4deg)}
+}
+
+.btn-solid span[aria-hidden="true"]{display:inline-block; transition:transform .2s ease}
+.btn-solid:hover span[aria-hidden="true"]{transform:translateX(3px)}
+
+.card:hover .avatar svg,
+.card:focus-visible .avatar svg{animation:avatarBob 1.9s ease-in-out infinite}
+@keyframes avatarBob{
+  0%,100%{transform:rotate(-2deg)}
+  50%{transform:rotate(2deg) translateY(-2px)}
+}
+
+.chips li{transition:background .22s ease, border-color .22s ease}
+.card:hover .chips li{background:var(--paper)}
+
+/* ---------------------------------------------------------- responsive */
+@media (max-width: 900px){
+  /* each slide keeps its own height, so a short slide does not end in a tall
+     empty card just because a neighbour is long */
+  .deck{align-items:flex-start}
+  .deck-slide{
+    grid-template-columns:1fr; align-items:start;
+    gap:20px; padding:24px 22px; min-height:0;
+  }
+  .slide-h{max-width:none; font-size:clamp(1.3rem, 4.6vw, 1.78rem)}
+  .slide-p{max-width:none}
+  .dial{width:168px}
+  .deck .stats{grid-template-columns:1fr}
+}
+
+@media (max-width: 520px){
+  .deck-slide{padding:20px 18px; border-radius:20px; box-shadow:5px 5px 0 rgba(0,0,0,.4)}
+  .chain{gap:6px}
+  .chain li{padding:8px 9px; font-size:.72rem}
+  .deck-hint{display:none}
+  .deck-btn{width:38px; height:38px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .deck-slide{transition:none; opacity:1; transform:none}
+  .slide-copy > .anim, .slide-art.anim{transition:none; opacity:1; translate:0 0}
+  .project::after, .sticker, .card:hover .avatar svg,
+  .deck-slide.is-active .chain li{animation:none}
+  .scroll-progress i{transition:none}
 }
